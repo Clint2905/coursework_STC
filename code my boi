@@ -1,0 +1,230 @@
+// Calaculate Hours, minutes and seconds given input in seconds
+
+#include <iostream>
+
+using namespace std;
+
+int timeEntered = 0;
+int timeOut = 0;
+
+int daysOut = 0;
+int hoursOut = 0;
+int minutesOut = 0;
+int secondsOut = 0;
+int minutesToSeconds = 60;
+int hoursToSeconds = 3600;
+int SecondsToHours = 60;
+
+
+bool calculatorRunning;
+
+char timerChoice = ' ';
+
+void Quitcalculator() {
+
+}
+
+
+
+//void PrintTimeSeconds()
+{
+    cout << "Time: ";
+    cout << timeOut;
+    cout << "s = ";
+
+    cout << daysOut;
+    cout << "d ";
+
+    cout << hoursOut;
+    cout << "h ";
+
+    cout << minutesOut;
+    cout << "m ";
+
+    cout << secondsOut;
+    cout << "s" << endl;
+    system("pause");
+}
+//void PrintTimeMinutues()
+{
+    cout << "Time: ";
+    cout << timeOut;
+    cout << "s = ";
+
+    cout << daysOut;
+    cout << "d ";
+
+    cout << hoursOut;
+    cout << "h ";
+
+    cout << minutesOut;
+    cout << "m ";
+
+    cout << secondsOut;
+    cout << "s" << endl;
+    system("pause");
+
+}
+//void PrintTimeHours()
+{
+    cout << "Time: ";
+    cout << timeOut;
+    cout << "s = ";
+
+    cout << daysOut;
+    cout << "d ";
+
+    cout << hoursOut;
+    cout << "h ";
+
+    cout << minutesOut;
+    cout << "m ";
+
+    cout << secondsOut;
+    cout << "s" << endl;
+    system("pause");
+}
+//void CalculateTimeSeconds()
+{
+    timeOut = timeEntered;
+
+    daysOut = timeEntered / (daysToHours * minutesToSeconds * hoursToMinutes);
+    timeEntered -= (daysToHours * minutesToSeconds * hoursToMinutes * daysOut);
+
+    hoursOut = timeEntered / (minutesToSeconds * hoursToMinutes);
+    timeEntered -= (minutesToSeconds * hoursToMinutes * hoursOut);
+
+    minutesOut = timeEntered / minutesToSeconds;
+    secondsOut = (int)timeEntered % minutesToSeconds;
+}
+
+//void calculateTimeMinutes() {
+    timeOut = timeEntered;
+
+    daysOut = timeEntered / (daysToHours * hoursToMinutes);
+    timeEntered -= (daysToHours * hoursToMinutes * daysOut);
+
+    hoursOut = timeEntered / hoursToMinutes;
+    timeEntered -= (minutesToSeconds * hoursOut);
+    //cout << timeEntered << endl; //Debug
+    minutesOut = timeEntered;
+
+}
+
+//void calculateTimeHours() {
+    timeOut = timeEntered;
+
+    daysOut = timeEntered / daysToHours;
+    timeEntered -= (daysToHours * daysOut);
+
+    hoursOut = timeEntered;
+    timeEntered -= (minutesToSeconds * hoursOut);
+}
+void SecondsToHoursEntry()
+{
+    cout << "Enter time in seconds: ";
+    cin >> timeEntered;
+
+    CalculateTimeSeconds();
+    PrintTimeSeconds();
+}
+
+void SecondsToMinutesEntry()
+{
+    cout << "Enter time in seconds: ";
+    cin >> timeEntered;
+
+    calculateTimeMinutes();
+   PrintTimeMinutues ();
+
+}
+
+void MinutesToHoursEntry()
+{
+    cout << "Enter time in mintues: ";
+    cin >> timeEntered;
+
+    calculateTimeMinutes();
+    PrintTimeMinutues();
+
+}
+
+void MinutesToSecondsEntry()
+{
+    cout << "Enter time in mintues: ";
+    cin >> timeEntered;
+
+    calculateTimeMinutes();
+    PrintTimeMinutues();
+
+}
+
+void HoursToSecondsEntry()
+{
+    cout << "Enter time in hours : ";
+    cin >> timeEntered;
+    
+    calculateTimeHours();
+    PrintTimeHours();
+}
+
+void ProcessMenuInput()
+{
+    switch (timerChoice)
+    {
+    case '1':
+       SecondsToHoursEntry();
+        break;
+    case '2':
+        SecondsToMinutesEntry();
+        break;
+    case '3':
+      MinutesToHoursEntry();
+        break;
+    case '4':
+        MinutesToSecondsEntry();
+        break;
+    case '5':
+        HoursToSecondsEntry();
+        break;
+    case 'Q':
+    case 'q':
+        Quitcalculator();
+        break;
+    default:
+        break;
+    }
+}
+
+void ShowTimerMenu()
+{
+    system("CLS");
+    cout << "******************" << endl;
+    cout << "*  Simple Time Calculator *" << endl;
+    cout << "******************" << endl;
+    cout << "[1] - seconds to hours" << endl;
+    cout << "[2] - seconds to minutes" << endl;
+    cout << "[3] - minutes to hours" << endl;
+    cout << "[4] - minutes to seconds" << endl;
+    cout << "[5] - hours to seconds" << endl;
+    cout << "------------------" << endl;
+    cout << "[Q] - Quit" << endl;
+    cout << "******************" << endl;
+    cout << "Enter [1], [2], [3] , [4], [5] to convert or [Q] to Quit: ";
+
+    cin >> timerChoice;
+    ProcessMenuInput();
+}
+
+
+
+int main()
+{
+    calculatorRunning = true; 
+    do {
+        ShowTimerMenu();
+    } while (calculatorRunning);
+   
+
+    return 0;
+}
